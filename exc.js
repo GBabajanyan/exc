@@ -27,9 +27,28 @@ function getPerms(arr) {
     });
     return allPerms
 }
-function getPosibilites(params) {
+
+function getAllPosibilites(params) {
     let finalArray = []
     let a = getCombs(params).map(el => finalArray.push(...getPerms(el)))
+    let biggestSubArrLength=0
+    finalArray.forEach(subArray=>{
+        biggestSubArrLength=subArray.length>biggestSubArrLength?subArray.length:biggestSubArrLength
+    })
+        for (let i = 2; i <= biggestSubArrLength; i++) {
+            params.forEach(el=>{
+                finalArray.push([...Array(i)].map(item=>el))
+            })
+        }
     return finalArray
 }
-console.log(getPosibilites(['a','b']));
+
+function getDesiredLengthPoss(array, num){
+    const allPos=getAllPosibilites(array)
+    const modArr=[]
+    allPos.forEach(item=>{
+        if(item.length<=num) modArr.push(item)
+    })
+    return modArr
+}
+console.log(getDesiredLengthPoss(['a','b','v'],2));
