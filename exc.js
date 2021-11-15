@@ -28,8 +28,8 @@ function getPerms(arr) {
     return allPerms
 }
 function getPosibilites(params) {
-    let ka = []
-    let a = getCombs(params).map(el => ka.push(...getPerms(el)))
-    return ka
+    let finalArray = []
+    let a = getCombs(params).map(el => finalArray.push(...getPerms(el)))
+    return finalArray
 }
 console.log(getPosibilites(['a','b']));
