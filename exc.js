@@ -2,7 +2,6 @@ function getCombs(arr) {
     if (arr.length === 0) return [[]];
     const a = arr[0]
     const rest = arr.slice(1)
-
     const withoutFirst = getCombs(rest)
     const withFirst = []
     for (let i = 0; i < withoutFirst.length; i++) {
